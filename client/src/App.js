@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
+
+const mapStateToProps = (state) => {
+  const date = state.get('date');
+  return {
+    date,
+  };
+}
 
 class App extends Component {
   render() {
+    const { date } = this.props;
     return (
       <div className="App">
         <header className="App-header">
@@ -11,11 +20,11 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          { date }
         </p>
       </div>
     );
   }
 }
 
-export default App;
+export default connect(mapStateToProps)(App);
