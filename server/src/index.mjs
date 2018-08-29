@@ -7,7 +7,7 @@ import mongoose from 'mongoose';
 import colors from 'colors';
 import socketIoRedis from 'socket.io-redis';
 
-import * as listeners from './listeners.js';
+import * as listeners from './listeners.mjs';
 
 const isRunningInDocker = process.env.DOCKER_DB;
 

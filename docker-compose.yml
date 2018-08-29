@@ -23,7 +23,7 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - ../client/src:/usr/src/app/src
+      - ./client/src:/app/src
 
   server:
     depends_on:
@@ -40,11 +40,11 @@ services:
     ports:
       - '8081:8081'
     volumes:
-      - ./server/src:/usr/src/app/src
+      - ./server/src:/app/src/
 
   emitter:
     container_name: "emitter"
-    build: ../emitter-server
+    build: ./emitter
     links:
       - mongo
     environment:
@@ -54,4 +54,4 @@ services:
     ports:
       - '8080:8080'
     volumes:
-      - ../emitter/src:/usr/src/app/src
+      - ./emitter/src:/app/src/

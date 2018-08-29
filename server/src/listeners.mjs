@@ -1,4 +1,4 @@
-import { UserModel } from './models.js';
+import { UserModel } from './models.mjs';
 
 let io;
 
