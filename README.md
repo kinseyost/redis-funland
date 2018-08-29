@@ -6,7 +6,7 @@ run docker-compose up
 This will start all of the dependent services for the project
 * [mongo](https://www.mongodb.com/)
 * [redis](https://redis.io/)
-* Our Services
+* [Services](#services)
 
 ### Services:
 * `client`
