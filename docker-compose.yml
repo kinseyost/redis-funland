@@ -1,0 +1,57 @@
+version: "3"
+
+services:
+
+  mongo:
+    image: mongo
+    container_name: "mongo"
+    ports:
+      - '27017:27017'
+
+  redis:
+    image: redis
+    container_name: "redis"
+    ports:
+      - '6379:6379'
+
+  client:
+    container_name: "client"
+    build: ./client
+    environment:
+      env_file: .env
+      NODE_ENV: development
+    ports:
+      - '3000:3000'
+    volumes:
+      - ../immutable-redux/src:/usr/src/app/src
+
+  server:
+    depends_on:
+      - mongo
+      - redis
+    container_name: "server"
+    build: ./server
+    links:
+      - mongo
+    environment:
+      env_file: .env
+      NODE_ENV: development
+      DOCKER_DB: 27107
+    ports:
+      - '8081:8081'
+    volumes:
+      - ../immutable-redux-server/src:/usr/src/app/src
+
+  emitter:
+    container_name: "emitter"
+    build: ../emitter-server
+    links:
+      - mongo
+    environment:
+      env_file: .env
+      NODE_ENV: development
+      DOCKER: 'true'
+    ports:
+      - '8080:8080'
+    volumes:
+      - ../emitter-server/src:/usr/src/app/src
