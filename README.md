@@ -8,7 +8,7 @@ This will start all of the dependent services for the project
 * [redis](https://redis.io/)
 * Our Services
 
-Services:
+### Services:
 * `client`
     - react based front-end
 * `server`
