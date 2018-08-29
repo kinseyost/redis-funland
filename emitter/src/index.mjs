@@ -15,6 +15,8 @@ const port = 8080;
 server.listen(port, () => {
   setInterval(function () {
     console.log('emitting time event');
-    io.to('room1').emit('messageFromEmitter', new Date);
+    const date = new Date();
+    const action = { type: 'DATE_UPDATE', date}
+    io.to('room1').emit('messageFromEmitter', action);
   }, 2000);
 });
