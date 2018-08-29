@@ -13,8 +13,8 @@ const server = http.Server(app);
 const port = 8080;
 
 server.listen(port, () => {
-    setInterval(function () {
-        console.log('emitting time event');
-        io.to('room1').emit('messageFromEmitter', new Date);
-    }, 2000);
+  setInterval(function () {
+    console.log('emitting time event');
+    io.to('room1').emit('messageFromEmitter', new Date);
+  }, 2000);
 });
