@@ -5,7 +5,6 @@ RUN mkdir -p /app
 WORKDIR /app/
 
 # Install dependencies
-COPY ./package.json /app/
 RUN yarn
 
 ADD . /app/

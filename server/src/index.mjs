@@ -23,6 +23,7 @@ io.on('connection', (socket) => {
   console.log('client connected', socket.id);
   socket.join('room1');
   listeners.initIO(io); // store instance of io in listeners module
+  listeners.broadcastUsers(); // display all users on connection
   socket.on('emit', (event) => {
     console.log('received message', event);
   })

@@ -9,6 +9,7 @@ export function initIO(_io) {
 export async function ADD_USER(action) {
 
   const user = action.user;
+  console.log('Adding new user', user);
   const newUser = new UserModel(user);
   try {
     await newUser.save();
@@ -19,9 +20,9 @@ export async function ADD_USER(action) {
   return action;
 }
 
-async function broadcastUsers() {
+export async function broadcastUsers() {
   const users = await FETCH_USERS();
-  console.log('sending users to room');
+  console.log('sending users to room', users);
   try {
     io.to('room1').emit('message', users);
   } catch (e) {
